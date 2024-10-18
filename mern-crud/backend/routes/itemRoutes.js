@@ -5,10 +5,19 @@ const router = express.Router();
 const Item = require('../models/Item');
 
 
+// READ: Get all items
+router.get('/itemss', async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.status(200).json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // CREATE: Add a new item
-router.post('/items', async (req, res) => {
-
-
+router.post('/itemss', async (req, res) => {
   try {
     const newItem = new Item(req.body);
     await newItem.save();
@@ -18,16 +27,7 @@ router.post('/items', async (req, res) => {
   }
 });
 
-// READ: Get all items
-router.get('/items', async (req, res) => {
 
-  try {
-    const items = await Item.find();
-    res.status(200).json(items);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
 
 // UPDATE: Update an item by ID
 router.put('/items/:id', async (req, res) => {
