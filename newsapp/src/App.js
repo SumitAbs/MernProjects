@@ -26,12 +26,16 @@ import './App.css';
 
 
 import React, { Component } from 'react'
+import Navbar from "./Components/Navbar";
+import News from "./Components/News";
 
 export default class App extends Component{
+    c="App of Sumit";
   render(){
     return(
         <div>
-        Testing for the new
+            <Navbar />
+            <News />
         </div>
       )
   }
