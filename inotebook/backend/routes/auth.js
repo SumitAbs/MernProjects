@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 const User = require('../Models/User');
 const bcrypt = require('bcryptjs')
 var  fetchUser = require('../middleware/fetchUser')
 const JWT_Key = "SecureKey";
 var jwt = require('jsonwebtoken');
+
+
 var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-
-
 //Default Rout
+
 router.get('/',(req, res)=>{
     res.json({'name':"sumit"})
 })
-
 // Create Users using POST "/api/auth/createUser" Doesn't require Auth
-const { body, validationResult } = require('express-validator');
 
 // body('field name','Custom Error Message')--validation Function--.isEmail(). :  Validation Section of Route
 router.post('/createUser',[
