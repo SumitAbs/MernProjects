@@ -13,9 +13,10 @@ class News extends Component {
         let url = "https://newsapi.org/v2/everything?q=bitcoin&apiKey=f2e575121e6a46f5b7d7b0d290f53b93";
         let data = await fetch(url);
         let parsedData =  await data.json();
-        this.setState({articles: parsedData.articles})
-    }
 
+        this.setState({ articles: Array.isArray(parsedData.articles) ? parsedData.articles : [] });
+        // this.setState({articles: parsedData.articles})
+    }
     render() {
         return (
             <div className="container my-3">
