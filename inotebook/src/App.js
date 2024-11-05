@@ -8,17 +8,20 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import NotesState from "./Context/Notes/NotesState";
 
 
 function App() {
     return (
         <>
-            <Navbar/>
-            <Routes>
-                <Route exact path="/" element={<Home/>}/>
+            <NotesState>
+                <Navbar/>
+                <Routes>
+                    <Route exact path="/" element={<Home/>}/>
 
-                <Route path="/about" element={<About/>}/>
-            </Routes>
+                    <Route path="/about" element={<About/>}/>
+                </Routes>
+            </NotesState>
         </>
     );
 }
